@@ -1,29 +1,30 @@
 import {model,Schema} from "mongoose";
+import bcrypt from "bcrypt";
 
 const userSchema = new Schema({
 fullname: {
     type :String,
     required : true,
     lowercase : true,
-    trim : true 
+    trim : true ,
 },
 
 mobile : {
     type : String,
     required : true,
-    
-    trim : true 
+    trim : true ,
+    unique : true,
 },
 email : {
     type : String ,
     required : true ,
-
-    trim : true 
+    trim : true ,
+    unique : true,
 },
 password : {
     type : String ,
     required : true ,
-    trim : true 
+    trim : true ,
 },
 
 status : {
@@ -38,6 +39,15 @@ role : {
 }
 
 } ,{timestamps:true});
+
+
+
+userSchema.pre('save',async function (next){
+const hashedPass = await bcrypt.hash(this.password.toString(),12);
+this.password=hashedPass;
+next();
+
+});
 
 const UserModel = model('User',userSchema);
  
