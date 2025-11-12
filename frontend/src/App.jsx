@@ -1,6 +1,7 @@
 import Homepage from "./components/home";
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 
+
 const App = () =>{
 
   return(
@@ -9,6 +10,7 @@ const App = () =>{
 <BrowserRouter>
   <Routes>
     <Route path ='/' element={<Homepage/>}/>
+    
   </Routes>
   </BrowserRouter>
   );

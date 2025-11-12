@@ -1,10 +1,14 @@
 import HomeLayout from "../../layout/HomeLayout";
+import Login from "./login";
+
 
 
 const Homepage = () =>{
 
     return(
-        <HomeLayout/>
+        <HomeLayout>
+            <Login/>
+             </HomeLayout>
     );
 }
 

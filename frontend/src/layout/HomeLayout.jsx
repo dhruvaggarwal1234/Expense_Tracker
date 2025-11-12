@@ -1,11 +1,6 @@
 import React from "react";
-import { Layout, theme, Avatar, Dropdown, Menu, Button } from "antd";
-import {
-  UserOutlined,
-  LogoutOutlined,
-  SettingOutlined,
-  BellOutlined,
-} from "@ant-design/icons";
+import { Layout, theme } from "antd";
+
 
 const { Header, Footer, Content } = Layout;
 
@@ -14,21 +9,6 @@ const HomeLayout = ({ children }) => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  // Dropdown menu for user
-  const userMenu = (
-    <Menu>
-      <Menu.Item key="profile" icon={<UserOutlined />}>
-        Profile
-      </Menu.Item>
-      <Menu.Item key="settings" icon={<SettingOutlined />}>
-        Settings
-      </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item key="logout" icon={<LogoutOutlined />}>
-        Logout
-      </Menu.Item>
-    </Menu>
-  );
 
   return (
     <Layout>
