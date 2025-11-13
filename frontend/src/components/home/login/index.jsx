@@ -1,8 +1,15 @@
+import log_img from "../../../assets/login/login_page.jpg";
+
 const Login = () => {
   return (
-    <h1 className="text-5xl text-green-500 ">
-      Login Page
-    </h1>
+    <div className="login_container  justify-between">
+      <div className="left_side w-150 h-150">
+        <img src={log_img} alt="Login Illustration"  className=" w-150 h-150"/>
+      </div>
+      <div className="right_side">
+         <div><h1>Login Page</h1></div>
+      </div>
+    </div>
   );
 };
 
