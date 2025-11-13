@@ -1,14 +1,16 @@
 import { Button, Card, Form, Input } from "antd";
 import log_img from "../../../assets/login/login_page.jpg";
-import {LoadingOutlined, LockOutlined, UserOutlined} from "@ant-design/icons" 
+import { LockOutlined, UserOutlined} from "@ant-design/icons" 
 import { Link } from "react-router-dom";
+import HomeLayout from "../../../layout/HomeLayout";
 
 
 const {Item} = Form ;
 
-const Login = () => {
+const Signup = () => {
   return (
-    <div className="flex">
+   <HomeLayout>
+     <div className="flex">
       <div className="w-1/2 hidden md:flex items-center justify-center">
         <img src={log_img} alt="bank" className="w-4/5 object-contain"/>
       </div>
@@ -41,6 +43,17 @@ const Login = () => {
             prefix={<LockOutlined/>}
              placeholder="Enter Your Password"
             />
+          </Item>
+
+         <Item
+          name="RePassword"
+          label="Password"
+          rules={[{required:"true"}]}
+          >
+            <Input.Password 
+            prefix={<LockOutlined/>}
+             placeholder="Enter Your Password Again"
+            />
 
 
           </Item>
@@ -64,16 +77,17 @@ const Login = () => {
           > Forget Password</Link>
           <Link
            style={{textDecoration:"underline"}}
-          to='/signup'
+          to='/'
           className="!text-[#FF735C] !font-bold"
           
-          >Don't have an account?</Link>
+          >Already Have Account?</Link>
          </div>
          </Card>
         
       </div>
     </div>
+   </HomeLayout>
   );
 };
 
-export default Login;
+export default Signup;
