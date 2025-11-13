@@ -6,6 +6,7 @@ import mongoose from "mongoose"
 import dotenv from "dotenv";
 
 import cookieparser from 'cookie-parser';
+import cors from "cors";
 
 
 dotenv.config();
@@ -22,8 +23,12 @@ mongoose.connect(process.env.DB_URL)
 
 
 //Cookie-parser
-
 app.use(cookieparser());
+
+//import cors
+app.use(cors({
+    origin: "http://localhost:5173",
+}))
 
 //app level middleware
 
@@ -34,3 +39,5 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
 app.use("/api/user",userRouter);
+
+app.get("/",(req,res) => res.json({Message:"Success"}));

@@ -1,13 +1,27 @@
 import { Button, Card, Form, Input } from "antd";
 import log_img from "../../../assets/login/login_page.jpg";
-import { LockOutlined, UserOutlined } from "@ant-design/icons"
+import { LockOutlined, MailOutlined, PhoneOutlined, UserOutlined } from "@ant-design/icons"
 import { Link } from "react-router-dom";
 import HomeLayout from "../../../layout/HomeLayout";
+import axios from "axios";
+
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
+
 
 
 const { Item } = Form;
 
 const Signup = () => {
+
+ const onFinish = async (values) =>{
+    try{
+     const {data} = await axios.post("/api/user/signup",values);
+     console.log(data)
+    }catch(error){
+        console.log(error);
+    }
+ }
+
     return (
         <HomeLayout>
             <div className="flex">
@@ -22,9 +36,10 @@ const Signup = () => {
                         <Form
                             name="login_form"
                             layout="vertical"
+                            onFinish={onFinish}
                         >   
                             <Item
-                                name="Fullname"
+                                name="fullname"
                                 label="Fullname"
                                 rules={[{ required: "true" }]}
                             >
@@ -36,11 +51,11 @@ const Signup = () => {
 
 
                             <Item
-                                name="Mobile"
+                                name="mobile"
                                 label="Phone No."
                                 rules={[{ required: "true" }]}
                             >
-                                <Input prefix={<UserOutlined />}
+                                <Input prefix={<PhoneOutlined />}
                                     placeholder="Enter Your Phone No"
                                 />
 
@@ -48,19 +63,20 @@ const Signup = () => {
 
                             
                             <Item
-                                name="Email"
+                                name="email"
                                 label="Username"
                                 rules={[{ required: "true" }]}
                             >
-                                <Input prefix={<UserOutlined />}
+                                <Input prefix={<MailOutlined />}
                                     placeholder="Enter Your Username"
                                 />
 
                             </Item>
 
                             <Item
-                                name="Password"
+                                name="password"
                                 label="Password"
+                                id="Password"
                                 rules={[{ required: "true" }]}
                             >
                                 <Input.Password
@@ -69,18 +85,9 @@ const Signup = () => {
                                 />
                             </Item>
 
-                            <Item
-                                name="RePassword"
-                                label="Password"
-                                rules={[{ required: "true" }]}
-                            >
-                                <Input.Password
-                                    prefix={<LockOutlined />}
-                                    placeholder="Enter Your Password Again"
-                                />
-
-
-                            </Item>
+                            
+                           
+                           
 
                             <Item>
                                 <Button type="text"
@@ -93,12 +100,7 @@ const Signup = () => {
                             </Item>
                         </Form>
                         <div className="flex items-center justify-between">
-                            <Link
-                                style={{ textDecoration: "underline" }}
-                                to='#'
-                                className="!text-[#FF735C] !font-bold"
-
-                            > Forget Password</Link>
+                           <div></div>
                             <Link
                                 style={{ textDecoration: "underline" }}
                                 to='/'
@@ -112,6 +114,6 @@ const Signup = () => {
             </div>
         </HomeLayout>
     );
-};d
+};
 
 export default Signup;
