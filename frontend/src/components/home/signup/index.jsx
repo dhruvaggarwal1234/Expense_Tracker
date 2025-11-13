@@ -112,6 +112,6 @@ const Signup = () => {
             </div>
         </HomeLayout>
     );
-};
+};d
 
 export default Signup;
